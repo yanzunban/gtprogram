@@ -1,0 +1,15 @@
+// FlowMind API — simple chat request
+const response = await fetch("https://redz-flowmind.netlify.app/api/v1/chat", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "Authorization": "Bearer rzfm-your-api-key"
+  },
+  body: JSON.stringify({
+    "model": "flowmind-590b",
+    "messages": [{ "role": "user", "content": "Hello!" }],
+    "max_tokens": 2048
+  })
+});
+const data = await response.json();
+console.log(data.choices[0].message.content);
